@@ -12,5 +12,21 @@ def number_place_minimum(number, places):
 
 
 
+def preview()
+
+
+
+class message:
+	def __init__():
+		segments = []
+
+
+
+@eel.expose
+def reset_editor():
+
+
+
+
 eel.init("web")
 eel.start("main.html")
