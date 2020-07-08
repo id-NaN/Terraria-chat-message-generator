@@ -1,10 +1,14 @@
-import json
-import os
-import colorsys
-import colr
-import pyperclip
 import eel
+import segments
 
+
+
+segment_types = {
+	"plain text":segments.plain,
+	"colored text":None,
+	"rainbow text":None,
+}
+print(list(segment_types.keys()))
 
 
 def number_place_minimum(number, places):
@@ -12,19 +16,38 @@ def number_place_minimum(number, places):
 
 
 
-def preview()
-
-
-
-class message:
-	def __init__():
-		segments = []
+class Segment:
+	def __init__(self):
+		self.type = None
 
 
 
 @eel.expose
-def reset_editor():
+def get_start_data():
+	global segment_types
+	data = {
+	"segment_types":(list(segment_types.keys()))
+	}
+	return data
 
+
+
+message = []
+@eel.expose
+def reset_editor():
+	global message
+	message = []
+	print("reset")
+	return "success"
+
+
+
+@eel.expose
+def new_segment(index):
+	global message
+	global segment_types
+	message.append(list(segment_types.values())[index])
+	print(message)
 
 
 

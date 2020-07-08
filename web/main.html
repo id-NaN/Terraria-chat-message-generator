@@ -6,10 +6,17 @@
 	<script type="text/javascript" src="main.js"></script>
 	<link rel="stylesheet" type="text/css" href="styles.css">
 </head>
-<body>
-	<div id="main_container">
-		I am Text
-		<input type="color">
+<body onload="load_data()">
+	<div id="main_option_container">
+		<button id="reset_button" onclick="reset_message()">reset</button>
+		<div id="select_segment_dropdown" class="dropdown">
+			<button class="dropdown_button">new segment</button>
+			<div class="dropdown_content">
+			</div>
+		</div>
+	</div>
+	<div id="main_segment_container">
+		
 	</div>
 </body>
 </html>
