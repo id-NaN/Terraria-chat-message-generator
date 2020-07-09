@@ -18,7 +18,7 @@ async function load_data() {
 
 
 eel.expose(update_segment_display)
-function update_segment_display(segments) {
+function update_segment_display(segments, message_preview, message_result) {
 	let segment_html = "";
 	for (var i = 0; i < segments.length; i++) {
 		segment = segments[i];
@@ -31,6 +31,9 @@ function update_segment_display(segments) {
 		child = container.children[i];
 		child.setAttribute("onchange", "process_data()");
 	}
+
+	document.getElementById("preview_area").innerHTML = message_preview
+	document.getElementById("result_area").innerHTML = message_result
 }
 
 

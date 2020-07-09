@@ -5,6 +5,7 @@ import segments
 
 segment_types = {
 	"plain text":segments.plain,
+	"colored text":segments.color,
 }
 print(list(segment_types.keys()))
 
@@ -47,7 +48,10 @@ def new_segment(index):
 	global segment_types
 	message.append(list(segment_types.values())[index]())
 	print(message)
-	eel.update_segment_display([s.get_html() for s in message])
+	message_preview = "".join([segment.get_preview() for segment in message])
+	message_result = "".join([segment.get_result() for segment in message])
+
+	eel.update_segment_display([s.get_html() for s in message], message_preview, message_result)
 
 
 
@@ -62,7 +66,9 @@ def update(keys, values):
 			value = segment_values[inner_index]
 			print(key, value)
 			setattr(message[outer_index], key, value)
-	eel.update_segment_display([s.get_html() for s in message])
+	message_preview = "".join([segment.get_preview() for segment in message])
+	message_result = "".join([segment.get_result() for segment in message])
+	eel.update_segment_display([s.get_html() for s in message], message_preview, message_result)
 
 
 
