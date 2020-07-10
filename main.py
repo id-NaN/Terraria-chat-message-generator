@@ -6,6 +6,7 @@ import segments
 segment_types = {
 	"plain text":segments.plain,
 	"colored text":segments.color,
+	"rainbow text":segments.rainbow,
 }
 print(list(segment_types.keys()))
 
@@ -51,7 +52,7 @@ def new_segment(index):
 	message_preview = "".join([segment.get_preview() for segment in message])
 	message_result = "".join([segment.get_result() for segment in message])
 
-	eel.update_segment_display([s.get_html() for s in message], message_preview, message_result)
+	eel.update_segment_display([s.get_html() for s in message])
 
 
 
@@ -68,9 +69,9 @@ def update(keys, values):
 			setattr(message[outer_index], key, value)
 	message_preview = "".join([segment.get_preview() for segment in message])
 	message_result = "".join([segment.get_result() for segment in message])
-	eel.update_segment_display([s.get_html() for s in message], message_preview, message_result)
+	eel.update_results(message_preview, message_result)
 
 
 
 eel.init("web")
-eel.start("main.html")
+eel.start("main.html", size = (1000, 650))

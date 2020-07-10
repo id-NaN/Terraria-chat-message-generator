@@ -18,7 +18,7 @@ async function load_data() {
 
 
 eel.expose(update_segment_display)
-function update_segment_display(segments, message_preview, message_result) {
+function update_segment_display(segments) {
 	let segment_html = "";
 	for (var i = 0; i < segments.length; i++) {
 		segment = segments[i];
@@ -31,9 +31,14 @@ function update_segment_display(segments, message_preview, message_result) {
 		child = container.children[i];
 		child.setAttribute("onchange", "process_data()");
 	}
+}
 
+
+
+eel.expose(update_results)
+function update_results(message_preview, message_result) {
 	document.getElementById("preview_area").innerHTML = message_preview
-	document.getElementById("result_area").innerHTML = message_result
+	document.getElementById("result_area").value = message_result
 }
 
 
@@ -57,4 +62,11 @@ function process_data() {
 		}
 	}
 	eel.update(keys, values);
+}
+
+
+
+function copy(copy_text) {
+	copy_text.select();
+	document.execCommand("copy");
 }
